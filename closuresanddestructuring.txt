@@ -1,0 +1,157 @@
+
+
+//pw skills
+1.function outer(){
+    let count=0;
+    return function (){
+        count++
+        console.log(`button is clicked ${count} times`)
+    }
+}
+const count=outer()
+count()
+count()
+
+button is clicked 2 times
+button is clicked 1 times
+
+2.let order={
+    orderId:"12345",
+    pro_name:"laptop",
+    quantity:1
+}
+let {orderId, pro_name,quantity}=order
+console.log(orderId)
+console.log(pro_name)
+console.log(quantity)
+
+
+
+12345
+laptop
+1
+
+
+
+
+
+3.function shoppingCart(){
+   
+    let cart=
+        {
+            "getCartItem":[]
+            
+        };
+    return function(){
+     
+      console.log(`Cart Item :${cart.getCartItem}`)
+    }
+}
+
+const cart=shoppingCart()
+cart()
+
+Cart Item :[]
+
+
+
+
+4.item to additem and 5.remove the item with productid
+function shoppingCart(){
+const cartItems=[];
+
+function ItemIndex(productid){
+return cartItems.findIndex(item=>item.id===productid)//1
+console.log("same product checking")
+}
+
+
+return {
+
+addItem:function(product){
+const itemindex=ItemIndex(product.id)
+
+
+if(itemindex!==-1){
+cartItems[itemindex].q++
+}
+else {
+cartItems.push({id:product.id,name:product.name,price:product.price,q:1})
+}
+},
+
+removeItem:function(productId){
+
+const indexToRemove=ItemIndex(productId)
+
+if(indexTORemove!==-1){
+cartItems.splice(indexToRemove,1)
+}
+},
+
+getCartItems:function(){
+return cartItems;
+}
+
+}
+}
+ 
+
+const cart=shoppingCart()
+
+console.log(cart.getCartItems());
+
+const p1={id:1,name:"scannner",price:5000}
+const p2={id:2,name:"printer",price:1000}
+
+
+cart.addItem(p1)
+
+cart.addItem(p2)
+
+
+cart.addItem(p1)
+
+
+console.log(cart.getCartItems());
+
+cart.removeItem(2)
+
+
+
+[]
+[
+  { id: 1, name: 'scannner', price: 5000, q: 2 },
+  { id: 2, name: 'printer', price: 1000, q: 1 }
+]
+
+
+[ { id: 1, name: 'scannner', price: 5000, q: 2 } ]
+
+
+6.
+function createPlayList(playListName){
+let playList=[];
+
+return{
+addSongs:function(songName,artist){
+playlist.push({songName,artist})
+},
+
+listSongs:function(songName,artist){
+if(platList.length===0){
+console.log(`${playListName}:playlist is empty`)
+}
+
+else{
+console.log(`${playListName} playlist: ${playList.map(song=>`${song.songName} by ${song.artist}`).join(',')
+} 
+
+}
+}
+}
+const myPlayList=createPlayList("sam")
+myPlayList.addSongs("om namah shivay"."k.k")
+myPlayList.listSongs();
+
+
